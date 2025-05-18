@@ -1,0 +1,299 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NAS Debian 9 - blog.labperso.ovh</title><meta name="description" content="1 - Matériel 1.1 - Boitier InWin : IW-MS04 MSI : MS-S0891-010 Intel Xeon E3-1220L v3 Akasa : AK-CC7108EP01 Convertisseur USB2 (carte mère) vers USB3 (boitier) 2x2Go DDR3&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://nidouille.github.io/nas-debian-9.html"><link rel="alternate" type="application/atom+xml" href="https://nidouille.github.io/feed.xml" title="blog.labperso.ovh - RSS"><link rel="alternate" type="application/json" href="https://nidouille.github.io/feed.json" title="blog.labperso.ovh - JSON"><meta property="og:title" content="NAS Debian 9"><meta property="og:image" content="https://nidouille.github.io/media/posts/1/IW-MS04_01.png"><meta property="og:image:width" content="1920"><meta property="og:image:height" content="1280"><meta property="og:site_name" content="blog.labperso.ovh"><meta property="og:description" content="1 - Matériel 1.1 - Boitier InWin : IW-MS04 MSI : MS-S0891-010 Intel Xeon E3-1220L v3 Akasa : AK-CC7108EP01 Convertisseur USB2 (carte mère) vers USB3 (boitier) 2x2Go DDR3&hellip;"><meta property="og:url" content="https://nidouille.github.io/nas-debian-9.html"><meta property="og:type" content="article"><link rel="preload" href="https://nidouille.github.io/assets/dynamic/fonts/jetbrainsmono/jetbrainsmono.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="https://nidouille.github.io/assets/dynamic/fonts/jetbrainsmono/jetbrainsmono-italic.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="https://nidouille.github.io/assets/css/style.css?v=0de5ed4b6a37ab1ddecf11b6f3d8bbb5"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://nidouille.github.io/nas-debian-9.html"},"headline":"NAS Debian 9","datePublished":"2018-06-05T00:00+02:00","dateModified":"2025-04-25T22:14+02:00","image":{"@type":"ImageObject","url":"https://nidouille.github.io/media/posts/1/IW-MS04_01.png","height":1280,"width":1920},"description":"1 - Matériel 1.1 - Boitier InWin : IW-MS04 MSI : MS-S0891-010 Intel Xeon E3-1220L v3 Akasa : AK-CC7108EP01 Convertisseur USB2 (carte mère) vers USB3 (boitier) 2x2Go DDR3&hellip;","author":{"@type":"Person","name":"Nida","url":"https://nidouille.github.io/authors/nida/"},"publisher":{"@type":"Organization","name":"Nida","logo":{"@type":"ImageObject","url":"https://nidouille.github.io/media/website/logo-stream-png.avif","height":false,"width":false}}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript></head><body class="post-template"><div class="container container--center"><header class="header"><div class="header__logo"><a class="logo" href="https://nidouille.github.io/"><img src="https://nidouille.github.io/media/website/logo-stream-png.avif" alt="blog.labperso.ovh" width="" height=""></a></div></header><main class="content"><article class="post"><header><h1 class="post__title">NAS Debian 9</h1><div class="post__meta"><time datetime="2018-06-05T00:00" class="post__date">juin 5, 2018</time></div><div class="post__tags"><a href="https://nidouille.github.io/tags/homelab/" class="invert">HomeLab</a></div></header><figure class="post__image post__cover"><img src="https://nidouille.github.io/media/posts/1/IW-MS04_01.png" srcset="https://nidouille.github.io/media/posts/1/responsive/IW-MS04_01-xs.png 300w, https://nidouille.github.io/media/posts/1/responsive/IW-MS04_01-sm.png 480w, https://nidouille.github.io/media/posts/1/responsive/IW-MS04_01-md.png 768w, https://nidouille.github.io/media/posts/1/responsive/IW-MS04_01-lg.png 1024w" sizes="(min-width: 920px) 703px, (min-width: 700px) calc(82vw - 35px), calc(100vw - 81px)" loading="eager" height="1280" width="1920" alt=""></figure><div class="post__entry"><div class="post-content"><h2 id="1---matériel">1 - Matériel</h2><h3 id="11---boitier">1.1 - Boitier</h3><p>InWin : <a href="https://www.in-win.com/en/ipc-server/ms04">IW-MS04</a><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_02.png" alt="NAS" loading="lazy" data-is-external-image="true"><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_03.png" alt="NAS" loading="lazy" data-is-external-image="true"></p><h3 id="12---carte-mère">1.2 - Carte mère</h3><p>MSI : <a href="http://eps.msi.com/server/MS-S0891">MS-S0891-010</a><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_04.png" alt="NAS" loading="lazy" data-is-external-image="true"><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_05.png" alt="NAS" loading="lazy" data-is-external-image="true"></p><h3 id="13---cpu">1.3 - CPU</h3><p><a href="https://ark.intel.com/fr/products/75051/Intel-Xeon-Processor-E3-1220L-v3-4M-Cache-1_10-GHz">Intel Xeon E3-1220L v3</a></p><h3 id="14---refroidissement">1.4 - Refroidissement</h3><p>Akasa : <a href="http://www.akasa.com.tw/search.php?seed=AK-CC7108EP01">AK-CC7108EP01</a><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_06.png" alt="NAS" loading="lazy" data-is-external-image="true"></p><h3 id="15---accessoires-divers">1.5 - Accessoires divers</h3><p><a href="https://www.amazon.fr/gp/product/B00EIE1VV6/ref=oh_aui_detailpage_o00_s00?ie=UTF8&amp;psc=1">Convertisseur USB2 (carte mère) vers USB3 (boitier)</a><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_07.jpg" alt="DeLOCK cable USB 3.0 Pinheader St&amp;gt;USB2.0 Pinheader - 30cm83281" loading="lazy" data-is-external-image="true"></p><h3 id="16---mémoire">1.6 - Mémoire</h3><p>2x2Go DDR3 ECC</p><h3 id="17---ssd-système">1.7 - SSD système</h3><p><a href="https://www.kingston.com/fr/support/technical/products?model=svp200s3">Kingston SSDNow V+200 - 120 Go</a><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_08.png" alt="NAS" loading="lazy" data-is-external-image="true"></p><h3 id="18---disques-durs">1.8 - Disques durs</h3><p>4x2To Western Digital Green<img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_09.png" alt="NAS" loading="lazy" data-is-external-image="true"></p><p>10 Gb <a href="https://www.chelsio.com/legacy-adapters/">Chelsio N320E Dual Port (cc2-n320e-sr)</a><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_10.png" alt="NAS" loading="lazy" data-is-external-image="true"></p><h3 id="110---sauvegarde-locale">1.10 - Sauvegarde locale</h3><p>WD My Book Home Edition 1 TB USB 2.0/FireWire 400/eSATA Desktop External Hard Drive<img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_11.jpg" alt="NAS" loading="lazy" data-is-external-image="true"></p><h3 id="111---onduleur">1.11 - Onduleur</h3><p><a href="https://www.apc.com/shop/fr/fr/products/APC-BACK-UPS-700VA-230V-AVR-French-Sockets/P-BX700U-FR">APC Back-UPS 700</a><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_12.png" alt="NAS" loading="lazy" data-is-external-image="true"><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_13.png" alt="NAS" loading="lazy" data-is-external-image="true"></p><h3 id="112---évolutions-programmées">1.12 - Évolutions programmées</h3><p>4x6To Western Digital Red</p><h2 id="installation-debian-9">Installation Debian 9</h2><h3 id="21---iso">2.1 - ISO</h3><p>Je fais une installation via une iso netinstall</p><p>Download de l’ISO : <a href="https://www.debian.org/CD/netinst/">page officiel de Debian</a></p><h3 id="22---installation">2.2 - Installation</h3><p><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_13.png" alt="NAS" loading="lazy" data-is-external-image="true"><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_14.png" alt="NAS" loading="lazy" data-is-external-image="true"><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_15.png" alt="NAS" loading="lazy" data-is-external-image="true"><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_16.png" alt="NAS" loading="lazy" data-is-external-image="true"><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_17.png" alt="NAS" loading="lazy" data-is-external-image="true"><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_18.png" alt="NAS" loading="lazy" data-is-external-image="true"><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_19.png" alt="NAS" loading="lazy" data-is-external-image="true"><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_20.png" alt="NAS" loading="lazy" data-is-external-image="true"><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_21.png" alt="NAS" loading="lazy" data-is-external-image="true"><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_22.png" alt="NAS" loading="lazy" data-is-external-image="true"><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_23.png" alt="NAS" loading="lazy" data-is-external-image="true"></p><h2 id="3---configuration-post-installation-root">3 - Configuration post installation (root)</h2><h3 id="31---réseau">3.1 - Réseau</h3><p>/etc/network/interfaces</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell"><span class="hljs-meta">#</span><span class="bash"> This file describes the network interfaces available on your system</span>
+<span class="hljs-meta">#</span><span class="bash"> and how to activate them. For more information, see interfaces(5).</span>
+
+source /etc/network/interfaces.d/*
+
+<span class="hljs-meta">#</span><span class="bash"> The loopback network interface</span>
+auto lo
+iface lo inet loopback
+
+<span class="hljs-meta">#</span><span class="bash"> 1Gb</span>
+<span class="hljs-meta">#</span><span class="bash"> enp3s0 on</span>
+<span class="hljs-meta">#</span><span class="bash"> enp4s0 off</span>
+allow-hotplug enp3s0
+iface enp3s0 inet static
+	address 192.168.1.2
+	netmask 255.255.255.0
+	network 192.168.1.0
+	broadcast 192.168.1.255
+	gateway 192.168.1.254
+
+
+
+<span class="hljs-meta">#</span><span class="bash"> Chelsio 10G</span>
+<span class="hljs-meta">#</span><span class="bash"> enp1s0 off</span>
+<span class="hljs-meta">#</span><span class="bash"> enp1s0d1 on</span>
+allow-hotplug enp1s0d1
+iface enp1s0d1 inet static
+	address 192.168.1.3
+	netmask 255.255.255.0
+	network 192.168.1.0
+	broadcast 192.168.1.255
+	gateway 192.168.1.254
+</code></pre></div><h3 id="32---installation-des-paquets-utiles-pour-le-serveur">3.2 - Installation des paquets utiles pour le serveur</h3><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">apt-get install xfsprogs gdisk sudo htop hddtemp nmon lm-sensors mdadm smartmontools samba samba-common smbclient nfs-kernel-server locate vim python-dev python-pip cron-apt curl gnupg2 libc-ares2 libcrypto++6 libmediainfo0v5 libpcrecpp0v5 libzen0v5 apt-transport-https firmware-misc-nonfree -y
+</code></pre></div><h3 id="33---ajout-dun-utilisateur-au-groupe-sudo">3.3 - Ajout d’un utilisateur au groupe sudo</h3><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">adduser utilisateur sudo
+</code></pre></div><h3 id="34---authentification-ssh-par-clef">3.4 - Authentification SSH par clef</h3><p>J’utilise pour utilisateur l’authentification par clé SSH</p><p>Créer le répertoire et le fichier pour inscrire la clef ssh de l’utilisateur</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">mkdir /home/utilisateur/.ssh
+touch /home/utilisateur/.ssh/authorized_keys
+</code></pre></div><p>Ensuite, inscrire sa clé public ssh dans /home/utilisateur/.ssh/authorized_keys</p><h3 id="35---mise-à-jour-du-microcode-cpu">3.5 - Mise à jour du microcode CPU</h3><p>La carte mère n’a pas de BIOS/UEFI récent. Donc, va falloir mettre à jours le microcode pour Spectre et Meltdown.</p><p>Il faut télécharger sur le site d’intel l’archive qui contients les microcodes: [https://downloadcenter.intel.com/download/27945?v=t</p><p>](<a href="https://downloadcenter.intel.com/download/27945?v=t)L">https://downloadcenter.intel.com/download/27945?v=t)L</a>’archive se nomme : microcode-20180703.tgz et sera mis dans mon dossier root.</p><p>Avant de commencer la mise à jour, voir quelle version est installé :</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">root@srv01-nas:~# dmesg | grep -i microcode
+[    1.984753] microcode: sig=0x306c3, pf=0x2, revision=0x17
+[    1.984868] microcode: Microcode Update Driver: v2.01 &lt;tigran@aivazian.fsnet.co.uk&gt;, Peter Oruba
+root@srv01-nas:~# grep microcode /proc/cpuinfo
+microcode       : 0x17
+microcode       : 0x17
+microcode       : 0x17
+microcode       : 0x17
+</code></pre></div><p>Procédons à la mise a jours, je décompresse l’archive dans un répertoire que je crée et nomme firmware. L’archive microcode-20180703.tgz est mon root.</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">mkdir firmware
+cd firmware
+tar xvf /root/microcode-20180703.tgz
+</code></pre></div><p>Vérifier que le répertoire suivant existe : /sys/devices/system/cpu/microcode/reload exits</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">ls -l /sys/devices/system/cpu/microcode/reload
+</code></pre></div><p>Copie des fichiers de microcode</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">cp -v intel-ucode/* /lib/firmware/intel-ucode/
+</code></pre></div><p>Bla bla de la mise à jours au boot</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">echo 1 &gt; /sys/devices/system/cpu/microcode/reload
+</code></pre></div><p>Update de l’initamfs</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">update-initramfs -u
+reboot
+</code></pre></div><p>Vérification que la mise à jour est bien appliquée</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">root@srv01-nas:~# dmesg | grep -i microcode
+[    0.000000] microcode: microcode updated early to revision 0x24, date = 2018-01-21
+[    1.986878] microcode: sig=0x306c3, pf=0x2, revision=0x24
+[    1.987022] microcode: Microcode Update Driver: v2.01 &lt;tigran@aivazian.fsnet.co.uk&gt;, Peter Oruba
+root@srv01-nas:~# grep microcode /proc/cpuinfo
+microcode       : 0x24
+microcode       : 0x24
+microcode       : 0x24
+microcode       : 0x24
+</code></pre></div><h3 id="36---monitoring-via-glances-facultatif">3.6 - Monitoring via Glances (facultatif)</h3><p><a href="https://nicolargo.github.io/glances/">Glances</a> est un script python créé par le français <a href="https://linuxfr.org/users/nicolargo">Nicolargo</a>. Installation de Glances via pip :</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">pip install glances
+</code></pre></div><p>Pour mettre à jour Glances par la suite :</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">pip install -- update glances
+</code></pre></div><p>Utiliser Glances</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">glances
+</code></pre></div><p><img src="https://blog.labperso.ovh/images/nas_debian_9/nas_debian_9_24.png" alt="Glance" loading="lazy" data-is-external-image="true"></p><h3 id="37---antivirus-clamav-facultatif">3.7 - Antivirus Clamav (facultatif)</h3><p>Installation des paquets</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">apt-get install clamav
+</code></pre></div><p>Stopper le service pour mettre a jours la base</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">service clamav-freshclam stop
+</code></pre></div><p>Mise à jour</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">freshclam
+ClamAV update process started at Thu Jun 28 13:02:46 2018
+WARNING: Your ClamAV installation is OUTDATED!
+WARNING: Local version: 0.99.4 Recommended version: 0.100.0
+DON'T PANIC! Read http://www.clamav.net/documents/upgrading-clamavDownloading main.cvd [ 51%]
+</code></pre></div><h3 id="38---réinitialisation-des-disques">3.8 - Réinitialisation des disques</h3><p>Dans mon cas, les disques durs ont déjà été utilisés. Le plus simple est de détruire l’ancienne table de partitionnement GPT.</p><p>Liste des disques durs</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">fdisk -l
+</code></pre></div><p>Disque en GPT , mise à zero</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">gdisk /dev/sdX
+</code></pre></div><ul><li><strong>x</strong> pour le menu des fonction suplémentaire de gdisk</li><li><strong>z</strong> pour détruire l’ancienne table de partitionnement GPT</li><li><strong>w</strong> pour enregistrer les changements et quitter gdisk</li></ul><h3 id="39---préparation-des-disques-avec-une-partition-linux-raid">3.9 - Préparation des disques avec une partition Linux RAID</h3><p>Liste des disques durs</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">fdisk -l
+</code></pre></div><p>Disque en GPT et partition Linux RAID</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">gdisk /dev/sdX
+</code></pre></div><ul><li><strong>o</strong> pour créer une nouvelle table de partition GPT puis sur Entrée</li><li><strong>n</strong> pour créer une nouvelle partition. Pour le numéro de partition, laissez par défaut</li><li>First Sector, par défaut</li><li>Last sector, par défaut</li><li>code de la partition (Linux RAID) : <strong>fd00</strong></li><li><strong>w</strong> pour enregistrer les changements et quitter gdisk</li></ul><h3 id="310---création-du-raid-10-via-mdadm">3.10 - Création du raid 10 via mdadm</h3><p>Dans mon cas, je ne prépare pas les disques, ni de LVM. Je laisse mdadm ce débrouiller. Cela n’a aucun impact pour la suite, comme étendre le raid en augmentant la capacité des disques durs.</p><p>Création de la grappe raid10</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">mdadm --create /dev/md0 --name=raid10 --level=10 --raid-devices=4 /dev/sd[b-e]
+</code></pre></div><p>Contrôle que la grappe raid est en cour de construction</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">cat /proc/mdstat
+</code></pre></div><p>Création du filesystem xfs</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">mkfs.xfs /dev/md0
+</code></pre></div><p>Point de montage du raid</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">mkdir /media/raid10
+mount /dev/md0 /media/raid10/
+</code></pre></div><p>Sauvegarde la configuration raid</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">cp /etc/mdadm/mdadm.conf /etc/mdadm/mdadm.conf.old
+mdadm --examine --scan --verbose &gt;&gt; /etc/mdadm/mdadm.conf
+update-initramfs -u -k all
+</code></pre></div><p>Montage automatique du raid au boot. /etc/fstab</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">echo “/dev/md0      /media/raid10      xfs      defaults      0      0” &gt;&gt; /etc/fstab
+</code></pre></div><h3 id="311---configuration-exim4">3.11 - Configuration exim4</h3><p>/etc/default/mdadm</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">START_DAEMON=true
+</code></pre></div><p>/etc/mdadm/mdadm.conf</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">MAILADDR xxxxxxxxxx@gmail.com
+</code></pre></div><p>Relancer le service mdadm pour la prise en charge</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">/etc/init.d/mdadm restart
+</code></pre></div><p>Test</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">mdadm --monitor --scan --test -1
+</code></pre></div><h3 id="312---configuration-du-partage-samba">3.12 - Configuration du partage Samba</h3><p>Ajout d’un utilisateur</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">smbpasswd -a nom_utilisateur
+</code></pre></div><p>Créations des dossiers partagés</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">mkdir /media/raid10/films
+mkdir /media/raid10/series
+mkdir /media/raid10/musiques
+mkdir /media/raid10/documents
+mkdir /media/raid10/docs
+</code></pre></div><p>Rendre accessible un répertoire en lecture écriture sans authentification</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">chmod 777 /media/docs
+</code></pre></div><p>Pour restreindre avec des groupes - Créer un groupe</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">groupadd nom_du_groupe
+</code></pre></div><p>Attribuer un répertoire a un groupe</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">chown -R root:nom_du_groupe /media/raid10/documents
+chmod -R 770 /media/raid10/documents
+</code></pre></div><p>/etc/samba/smb.conf</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">[global] 
+	workgroup = WORKGROUP
+	server string = %h server
+	netbios name = NAS
+	dns proxy = no
+
+
+[network]
+<span class="hljs-meta">#</span><span class="bash">	hosts allow = 192.168.0. 127. <span class="hljs-comment"># ajouté et à modifier selon l'IP du réseau local</span></span>
+<span class="hljs-meta">#</span><span class="bash">	<span class="hljs-built_in">bind</span> interfaces only = yes    <span class="hljs-comment"># mettre "yes" pour utiliser le choix des interfaces (ligne au dessous)</span></span>
+<span class="hljs-meta">#</span><span class="bash">	interfaces = 192.168.0.15/24  <span class="hljs-comment"># Pour éviter le wifi, on peut mettre à la place de l'IP/masque, le nom de l'interface "eth0:0"</span></span>
+
+[log]
+	log file = /var/log/samba/log.%m
+	max log size = 1000
+	syslog = 0
+	panic action = /usr/share/samba/panic-action %d
+
+[security]
+	security = user
+	map to guest = Bad User
+	encrypt passwords = true
+	passdb backend = smbpasswd
+	obey pam restrictions = no
+	unix password sync = no
+	passwd program = /usr/bin/passwd %u
+	passwd chat = *Entersnews*spassword:* %nn *Retypesnews*spassword:* %nn *passwordsupdatedssuccessfully* .
+	pam password change = yes
+
+[documents] 
+	path = /media/raid10/documents
+	comment = pour gestion
+	valid users = @partage
+	read only = no
+	browseable = yes
+	writeable = yes
+	create mask = 0777
+	directory mask = 0777
+
+[docs]
+	path = /media/raid10/docs
+	comment = Documentaires
+	browseable = yes
+	read only = no
+	create mask = 0777
+	directory mask = 0777
+	valid users = nobody
+	admin users = nobody
+	guest ok = yes
+
+[films]
+	path = /media/raid10/films
+	comment = raid 10
+	browseable = yes
+	read only = no
+	create mask = 0777
+	directory mask = 0777
+	valid users = nobody
+	admin users = nobody
+	guest ok = yes
+	
+[musiques]
+	path = /media/raid10/musiques
+	comment = raid 10
+	browseable = yes
+	read only = no
+	create mask = 0777
+	directory mask = 0777
+	valid users = nobody
+	admin users = nobody
+	guest ok = yes
+
+[series]
+	path = /media/raid10/series
+	comment = raid 10
+	browseable = yes
+	read only = no
+	create mask = 0777
+	directory mask = 0777
+	valid users = nobody
+	admin users = nobody
+	guest ok = yes
+
+</code></pre></div><h3 id="313---installation-de-plex">3.13 - Installation de Plex</h3><p>Téléchargement</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">wget https://downloads.plex.tv/https://downloads.plex.tv/plex-media-server/1.13.3.5223-cd1e0da1b/plexmediaserver_1.13.3.5223-cd1e0da1b_amd64.deb
+</code></pre></div><p>Installation</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">dpkg -i plexmediaserver_1.13.3.5223-cd1e0da1b_amd64.deb
+</code></pre></div><p>Lancement du service</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">systemctl status plexmediaserver
+</code></pre></div><p>Interface de management</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">http://ip:32400/manage
+</code></pre></div><h3 id="314---gestion-de-londuleur">3.14 - Gestion de l’onduleur</h3><p>Installation</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">apt-get install apcupsd
+</code></pre></div><p>Voir si l’onduleur est bien détecté sur le port USB</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">lsusb
+</code></pre></div><p>/etc/apcupsd/apcupsd.conf</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">UPSTYPE usb
+UPSCABLE usb
+DEVICE
+</code></pre></div><p>/etc/default/apcupsd</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">ISCONFIGURED=yes
+</code></pre></div><h2 id="4---gestion-du-serveur">4 - Gestion du serveur</h2><h3 id="41---remplacer-disques-dur-défaillant">4.1 - Remplacer disques dur défaillant</h3><p>Passer le disque dur en défaut pour le retirer</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">mdadm --manage /dev/md0 --set-faulty /dev/sd**X**
+mdadm --manage /dev/md0 --remove /dev/sd**X**
+</code></pre></div><p>Ajout du disque dur</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">mdadm --manage /dev/md0 --add /dev/sd**X**
+</code></pre></div><p>Contrôle de la reconstruction</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">cat /proc/mdstat
+</code></pre></div><h3 id="42---étendre-le-raid-10">4.2 - Étendre le RAID 10</h3><p>Ajout de disques dur de plus grande capacité comme la procédure du dessus. Puis étendre le volume raid.</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">mdadm --grow /dev/md0 --size=max
+</code></pre></div><p>Étendre le filesystem</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">xfs_growfs /dev/md0
+</code></pre></div><p>Example :</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">/dev/md0:
+        Version : 1.2
+  Creation Time : Thu Jun 28 11:23:53 2018
+     Raid Level : raid10
+     Array Size : 41910272 (39.97 GiB 42.92 GB)
+  Used Dev Size : 20955136 (19.98 GiB 21.46 GB)
+   Raid Devices : 4
+  Total Devices : 4
+    Persistence : Superblock is persistent
+
+    Update Time : Thu Jun 28 11:48:21 2018
+          State : clean, degraded, recovering
+ Active Devices : 2
+Working Devices : 4
+ Failed Devices : 0
+  Spare Devices : 2
+
+         Layout : near=2
+     Chunk Size : 512K
+
+ Rebuild Status : 1% complete
+
+           Name : nas:0  (local to host nas)
+           UUID : 17a39bf3:d2f61aad:598079f6:dfd5c6d5
+         Events : 58
+
+    Number   Major   Minor   RaidDevice State
+       4       8       16        0      active sync set-A   /dev/sdb
+       5       8       32        1      spare rebuilding   /dev/sdc
+       6       8       48        2      spare rebuilding   /dev/sdd
+       3       8       64        3      active sync set-B   /dev/sde
+
+
+
+
+
+
+
+root@nas:~# mdadm --grow /dev/md0 --size=max
+mdadm: component size of /dev/md0 has been set to 62898176K
+root@nas:~# xfs_growfs /dev/md0
+meta-data=/dev/md0               isize=512    agcount=16, agsize=654720 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1 spinodes=0 rmapbt=0
+         =                       reflink=0
+data     =                       bsize=4096   blocks=10475520, imaxpct=25
+         =                       sunit=128    swidth=256 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal               bsize=4096   blocks=5120, version=2
+         =                       sectsz=512   sunit=8 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+data blocks changed from 10475520 to 31449088
+root@nas:~# mdadm --detail /dev/md0
+/dev/md0:
+        Version : 1.2
+  Creation Time : Thu Jun 28 11:23:53 2018
+     Raid Level : raid10
+     Array Size : 125796352 (119.97 GiB 128.82 GB)
+  Used Dev Size : 62898176 (59.98 GiB 64.41 GB)
+   Raid Devices : 4
+  Total Devices : 4
+    Persistence : Superblock is persistent
+
+    Update Time : Thu Jun 28 11:51:35 2018
+          State : active, degraded, recovering
+ Active Devices : 2
+Working Devices : 4
+ Failed Devices : 0
+  Spare Devices : 2
+
+         Layout : near=2
+     Chunk Size : 512K
+
+ Rebuild Status : 27% complete
+
+           Name : nas:0  (local to host nas)
+           UUID : 17a39bf3:d2f61aad:598079f6:dfd5c6d5
+         Events : 73
+
+    Number   Major   Minor   RaidDevice State
+       4       8       16        0      active sync set-A   /dev/sdb
+       5       8       32        1      spare rebuilding   /dev/sdc
+       6       8       48        2      spare rebuilding   /dev/sdd
+       3       8       64        3      active sync set-B   /dev/sde
+
+
+</code></pre></div><h3 id="43---remplacement-carte-mère">4.3 - Remplacement carte mère</h3><p>Contrôle de l’état des disques durs du raid installé précédemment sur une autre carte mère</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">mdadm --examine /dev/sd[bcde] &gt;&gt; raid.status
+</code></pre></div><p>Création du fichier de configuration et de son initialisation</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">cp /etc/mdadm/mdadm.conf /etc/mdadm/mdadm.conf.old
+mdadm --examine --scan --verbose &gt;&gt; /etc/mdadm/mdadm.conf
+update-initramfs -u -k all
+</code></pre></div></div><footer class="post-footer"><ul class="post-tags"><li> </li></ul></footer></div><footer class="wrapper post__footer"><p class="post__last-updated">This article was updated on avril 25, 2025</p><div class="post__share"></div></footer><nav class="pagination"><div class="pagination__title"><span>Read other posts</span></div><div class="pagination__buttons"><a href="https://nidouille.github.io/base-de-super-vilain.html" class="btn next" rel="next" aria-label="[MISSING TRANSLATION]:  Base de super vilain "><span class="btn__text">Base de super vilain</span> <span class="btn__icon">→</span></a></div></nav></article></main><footer class="footer"><div class="footer__inner"><div class="footer__copyright"><p>© 2024 Powered by Publii CMS :: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank" rel="noopener">Theme</a> ported by the <a href="https://getpublii.com/customization-service/" target="_blank" rel="noopener">Publii Team</a></p></div></div></footer></div><script defer="defer" src="https://nidouille.github.io/assets/js/scripts.min.js?v=c2232aa7558e9517946129d2a1b8c770"></script><script>window.publiiThemeMenuConfig={mobileMenuMode:'sidebar',animationSpeed:300,submenuWidth: 'auto',doubleClickTime:500,mobileMenuExpandableSubmenus:true,relatedContainerForOverlayMenuSelector:'.top'};</script><script>var images = document.querySelectorAll('img[loading]');
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script></body></html>

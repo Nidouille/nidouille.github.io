@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sécurisation basique de son Proxmox - blog.labperso.ovh</title><meta name="description" content="Je vois sur Internet des serveurs Proxmox pas sécurisés voir pire, des conseils qui préconisent d’utiliser un firewall comme pfSense installé en machine virtuelle pour&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://nidouille.github.io/securisation-basique-de-son-proxmox.html"><link rel="alternate" type="application/atom+xml" href="https://nidouille.github.io/feed.xml" title="blog.labperso.ovh - RSS"><link rel="alternate" type="application/json" href="https://nidouille.github.io/feed.json" title="blog.labperso.ovh - JSON"><meta property="og:title" content="Sécurisation basique de son Proxmox"><meta property="og:image" content="https://nidouille.github.io/media/website/logo-stream-png.avif"><meta property="og:site_name" content="blog.labperso.ovh"><meta property="og:description" content="Je vois sur Internet des serveurs Proxmox pas sécurisés voir pire, des conseils qui préconisent d’utiliser un firewall comme pfSense installé en machine virtuelle pour&hellip;"><meta property="og:url" content="https://nidouille.github.io/securisation-basique-de-son-proxmox.html"><meta property="og:type" content="article"><link rel="preload" href="https://nidouille.github.io/assets/dynamic/fonts/jetbrainsmono/jetbrainsmono.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="https://nidouille.github.io/assets/dynamic/fonts/jetbrainsmono/jetbrainsmono-italic.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="https://nidouille.github.io/assets/css/style.css?v=0de5ed4b6a37ab1ddecf11b6f3d8bbb5"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://nidouille.github.io/securisation-basique-de-son-proxmox.html"},"headline":"Sécurisation basique de son Proxmox","datePublished":"2021-12-14T00:00+01:00","dateModified":"2025-04-07T15:06+02:00","image":{"@type":"ImageObject","url":"https://nidouille.github.io/media/website/logo-stream-png.avif","height":false,"width":false},"description":"Je vois sur Internet des serveurs Proxmox pas sécurisés voir pire, des conseils qui préconisent d’utiliser un firewall comme pfSense installé en machine virtuelle pour&hellip;","author":{"@type":"Person","name":"Nida","url":"https://nidouille.github.io/authors/nida/"},"publisher":{"@type":"Organization","name":"Nida","logo":{"@type":"ImageObject","url":"https://nidouille.github.io/media/website/logo-stream-png.avif","height":false,"width":false}}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript></head><body class="post-template"><div class="container container--center"><header class="header"><div class="header__logo"><a class="logo" href="https://nidouille.github.io/"><img src="https://nidouille.github.io/media/website/logo-stream-png.avif" alt="blog.labperso.ovh" width="" height=""></a></div></header><main class="content"><article class="post"><header><h1 class="post__title">Sécurisation basique de son Proxmox</h1><div class="post__meta"><time datetime="2021-12-14T00:00" class="post__date">décembre 14, 2021</time></div></header><div class="post__entry"><div class="post-content"><div class="post__toc"><h3>Table of Contents</h3><ul><li><a href="#firewall">Firewall</a><ul><li><a href="#alias">Alias</a><ul><li><a href="#plage-dip">Plage d’IP</a></li><li><a href="#une-ip">Une IP</a></li></ul></li><li><a href="#règles-de-firewall">Règles de firewall</a><ul><li><a href="#macro">Macro</a></li><li><a href="#protocol">Protocol</a></li></ul></li><li><a href="#chef-je-me-suis-coupé-la-main">Chef je me suis coupé la main</a></li></ul></li><li><a href="#fail2ban">Fail2Ban</a><ul><li><a href="#installation-de-fail2ban">Installation de Fail2Ban</a></li><li><a href="#configuration-de-fail2ban">Configuration de fail2Ban</a></li><li><a href="#les-commandes-utiles-de-fail2ban">Les commandes utiles de Fail2Ban</a><ul><li><a href="#bannir-une-ip">Bannir une IP</a></li><li><a href="#332-enlever-le-ban-dune-ip">3.3.2 Enlever le ban d’une IP</a></li><li><a href="#lister-les-règles">Lister les règles</a></li><li><a href="#détails-dune-règle">Détails d’une règle</a></li></ul></li></ul></li><li><a href="#ssh">SSH</a></li><li><a href="#authentification-à-double-facteurs-totp">Authentification à double facteurs TOTP</a></li></ul></div><p>Je vois sur Internet des serveurs Proxmox pas sécurisés voir pire, des conseils qui préconisent d’utiliser un firewall comme pfSense installé en machine virtuelle pour sécuriser l’hyperviseur alors que ce dernier est hébergé chez un fournisseur dont on ne sait rien du réseau. Votre fournisseur peut proposer un firewall comme chez OVH avec son système <a href="https://www.ovh.com/fr/anti-ddos/">anti-DDoS</a>, mais cela ne vous protège que de l’extérieur pas de l’intérieur du réseau qui comporte une multitude de serveurs d’autre client.</p><p>La logique pour un réseau en entreprise ou chez soit pour un home lab ou de l’auto hébergement sera la même.</p><p><strong>Quel que soit l’hyperviseur, il faut que celui-ci soit sécurisé. S’il n’est pas sécurisé, toutes vos machines virtuelles ou conteneurs sont potentiellement compromis.</strong></p><h2 id="firewall">Firewall</h2><p>Proxmox intègre un firewall agissant sur 3 parties distinctes :</p><ul><li>Datancenter</li><li>Serveur Proxmox alias pve</li><li>Machines virtuelles et conteneurs LXC</li></ul><p>La partie machine virtuelle et conteneur est indépendante des deux autres. Elle n’a pas intérêt dans la sécurisation du serveur Proxmox.</p><p>Je me base que pour un seul hot Proxmox, qui dans ce cas le fait de faire les règles au niveau du data center ou du node n’aura pas forcément d’impact.</p><h3 id="alias">Alias</h3><p>Alias se trouve dans la partie firewall du Datacenter et va permettre de nommer les IP ou les plages d’IP a utiliser dans le firewall.</p><p>C’est une habitude de travail de créer des alias, ça évite les oublies, ça permet aussi d’aller plus vite quand on a une correction à effectuer sur une grosse quantité de règles de filtrage.</p><p><img src="https://blog.labperso.ovh/images/Proxmox_secu/01.png" alt="" loading="lazy" data-is-external-image="true"></p><h4 id="plage-dip">Plage d’IP</h4><p><img src="https://blog.labperso.ovh/images/Proxmox_secu/02.png" alt="" loading="lazy" data-is-external-image="true"></p><h4 id="une-ip">Une IP</h4><p><img src="https://blog.labperso.ovh/images/Proxmox_secu/03.png" alt="" loading="lazy" data-is-external-image="true"></p><h3 id="règles-de-firewall">Règles de firewall</h3><p>Rien de compliqué, on autorise en entrée le port 8006, le SSH, le ping. Et comme c’est qu’un seul node, pas besoin de pressiser la destination (pas idéal, mais cela simplifie les choses) ni l’interface sur laquelle le trafic doit passer qui de toute façons pour un seul node sera vmbr0.</p><table><thead><tr><th>Direction</th><th>Action</th><th>Source</th><th>Protocol</th><th>Destination Port</th><th>Log Level</th><th>Comment</th></tr></thead><tbody><tr><td>in</td><td>ALLOW</td><td> </td><td>tcp</td><td>8006</td><td>nolog</td><td>web GUI</td></tr><tr><td>in</td><td>ALLOW</td><td> </td><td>tcp</td><td>22</td><td>nolog</td><td>ssh</td></tr><tr><td>in</td><td>ALLOW</td><td> </td><td>icmp</td><td> </td><td>nolog</td><td>ping</td></tr></tbody></table><h4 id="macro">Macro</h4><p>Il est possible d’utiliser des macro de configuration pour certains protocoles comme le SSH ou le protocole SMB qui a besoin d’ouverture de plusieurs ports (TCP 445, TCP 139, UDP 138-139), cela facilite grandement la lecture des règles si vous devez l’utiliser.</p><p><img src="https://blog.labperso.ovh/images/Proxmox_secu/04.png" alt="" loading="lazy" data-is-external-image="true"></p><h4 id="protocol">Protocol</h4><p><img src="https://blog.labperso.ovh/images/Proxmox_secu/05.png" alt="" loading="lazy" data-is-external-image="true"></p><h3 id="chef-je-me-suis-coupé-la-main">Chef je me suis coupé la main</h3><p>En console, il est possible de désactiver le firewall</p><p>Editez le fichier <em>/etc/pve/firewall/cluster.fw</em> et remplacez la valeur <strong>1</strong> par <strong>0</strong>.</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">[OPTIONS]
+
+enable: 1
+</code></pre></div><h2 id="fail2ban">Fail2Ban</h2><h3 id="installation-de-fail2ban">Installation de Fail2Ban</h3><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">apt install fail2ban
+</code></pre></div><h3 id="configuration-de-fail2ban">Configuration de fail2Ban</h3><p>Editez le fichier :/etc/fail2ban/jail.local</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">[proxmox]
+enabled = true
+port = https,http,8006
+filter = proxmox
+logpath = /var/log/daemon.log
+maxretry = 3
+bantime = 3600 #1 heure
+
+[sshd]
+enabled = true
+port = ssh
+filter = sshd
+logpath = /var/log/auth.log
+maxretry = 3
+findtime = 300
+bantime = 86400 #24 heures
+ignoreip = 127.0.0.1
+</code></pre></div><p>/etc/fail2ban/filter.d/proxmox.conf</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">[Definition]
+failregex = pvedaemon\[.*authentication failure; rhost=&lt;HOST&gt; user=.* msg=.*
+ignoreregex =
+</code></pre></div><p>Relancer le service de Fail2Ban</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">systemctl restart fail2ban.service
+</code></pre></div><p>Sources : <a href="https://pve.proxmox.com/wiki/Fail2ban">wiki Proxmox</a></p><h3 id="les-commandes-utiles-de-fail2ban">Les commandes utiles de Fail2Ban</h3><h4 id="bannir-une-ip">Bannir une IP</h4><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">fail2ban-client set [nom du jail] banip [IP à bannir]
+</code></pre></div><h4 id="332-enlever-le-ban-dune-ip">3.3.2 Enlever le ban d’une IP</h4><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">fail2ban-client set [nom du jail] unbanip [IP concerné]
+</code></pre></div><h4 id="lister-les-règles">Lister les règles</h4><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">fail2ban-client status
+
+Status
+|- Number of jail:      1
+`- Jail list:   sshd
+</code></pre></div><h4 id="détails-dune-règle">Détails d’une règle</h4><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">fail2ban-client status sshd
+
+Status for the jail: sshd
+|- Filter
+|  |- Currently failed: 0
+|  |- Total failed:     5
+|  `- File list:        /var/log/auth.log
+`- Actions
+   |- Currently banned: 1
+   |- Total banned:     1
+   `- Banned IP list:   192.168.1.21
+</code></pre></div><p>Et si l’on veut en savoir plus sur les tentatives de connexion, il faut regarder dans /var/log/auth.log</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">tail /var/log/auth.log
+
+Dec  9 12:46:14 pve sshd[3769206]: Failed password for nidouille from 192.168.1.21 port 39516 ssh2
+Dec  9 12:46:18 pve sshd[3769206]: Failed password for nidouille from 192.168.1.21 port 39516 ssh2
+Dec  9 12:46:22 pve sshd[3769206]: Failed password for nidouille from 192.168.1.21 port 39516 ssh2
+Dec  9 12:46:23 pve sshd[3769206]: Connection closed by authenticating user nidouille 192.168.1.21 port 39516 [preauth]
+Dec  9 12:46:23 pve sshd[3769206]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.1.21  user=nidouille
+</code></pre></div><h2 id="ssh">SSH</h2><p>Par défaut Proxmox ne propose qu’un compte utilisateur : root. On va le sécuriser à minima pour les connexions SSH.</p><p>Voici les options d’activées après une installation d’un node dans /etc/ssh/sshd_config et ce n’est pas folichon.</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell">PermitRootLogin yes
+
+<span class="hljs-meta">#</span><span class="bash"> Change to yes to <span class="hljs-built_in">enable</span> challenge-response passwords (beware issues with</span>
+<span class="hljs-meta">#</span><span class="bash"> some PAM modules and threads)</span>
+ChallengeResponseAuthentication no
+
+UsePAM yes
+X11Forwarding yes
+PrintMotd no
+
+<span class="hljs-meta">#</span><span class="bash"> Allow client to pass locale environment variables</span>
+AcceptEnv LANG LC_*
+
+<span class="hljs-meta">#</span><span class="bash"> override default of no subsystems</span>
+Subsystem       sftp    /usr/lib/openssh/sftp-server
+</code></pre></div><p>Fail2Ban amène une protection pour le brut force mais si on garde l’utilisateur root pour accès distant en ssh, on va monté d’un cran la sécurité en obligeant la connexion via clefs. Je ne serais que trop conseiller la désactivation de l’utilisateur SSH au profit d’un autre compte système.</p><p>Je part du principe que vous avez vos clefs SSH privés et publique.</p><p>Dans /root/.ssh/authorized_keys vous allez renseigner votre clef publique</p><p>Puis modifier /etc/ssh/sshd_config pour forcer authentification par clefs.</p><div class="highlight"><pre tabindex="0"><code class="language-shell hljs" data-lang="shell"><span class="hljs-meta">#</span><span class="bash">PermitRootLogin yes</span>
+PermitRootLogin prohibit-password
+PubkeyAuthentication yes
+PasswordAuthentication no
+PermitEmptyPassword no
+
+<span class="hljs-meta">#</span><span class="bash"> Change to yes to <span class="hljs-built_in">enable</span> challenge-response passwords (beware issues with</span>
+<span class="hljs-meta">#</span><span class="bash"> some PAM modules and threads)</span>
+ChallengeResponseAuthentication no
+
+UsePAM yes
+X11Forwarding no
+PrintMotd no
+
+<span class="hljs-meta">#</span><span class="bash"> Allow client to pass locale environment variables</span>
+AcceptEnv LANG LC_*
+
+<span class="hljs-meta">#</span><span class="bash"> override default of no subsystems</span>
+Subsystem       sftp    /usr/lib/openssh/sftp-server
+</code></pre></div><h2 id="authentification-à-double-facteurs-totp">Authentification à double facteurs TOTP</h2><p>Pour la mise en place rapide d’une double authentification, la solution du TOTP est idéal. Il faut juste un gestionnaire de mot de passe qui possède cette fonctionnalité comme Bitwarden, LastPass via son application dédié Authentificator, NordPass, etc., ou des applications dédiées comme LastPass Authentificator, etc.</p><p>Pour en savoir plus sur le TOTP:</p><ul><li>site de la société française Synestis spécialisé en cybersécurité : <a href="https://www.synetis.com/authentification-totp/">lien</a></li><li>blog de l’hébergeur IONOS : <a href="https://www.ionos.fr/digitalguide/serveur/securite/totp/">lien</a></li></ul><p>Pour le tutoriel, j’utilise Bitwarden (produit très utilisé) pour la génération du code aléatoire. Mais il n’est pas possible sur l’application d’effectuer des captures d’écran, les captures faite le sont sur mon client Bitwarden installé sur mon PC.</p><p><strong>Note importante : ne pas utiliser le même logiciel pour le TOTP et les mots de passe !</strong></p><p><img src="https://blog.labperso.ovh/images/Proxmox_secu/06.png" alt="" loading="lazy" data-is-external-image="true"></p><p>Ouvrir Bitwarden sur votre téléphone</p><p>Créer un nouvel élément de type identifiant</p><ul><li>Nom pour Bitwarden</li><li>Nom d’utilisateur</li><li>Le mot de passe de l’utilisateur (facultatif)</li><li>Clé authentification (TOTP) : prenez en photo le QR code généré et cela remplira la ligne</li></ul><p><img src="https://blog.labperso.ovh/images/Proxmox_secu/07.png" alt="" loading="lazy" data-is-external-image="true">Sauvegarder identifiant créé et ensuite ouvrez le. Vous verrez un code généré avec un temps avant la génération d’un nouveau code (30 secondes).</p><p><img src="https://blog.labperso.ovh/images/Proxmox_secu/08.png" alt="" loading="lazy" data-is-external-image="true">Rentrer le code dans la boite de dialogue de création de compte TOTP de Proxmox pour activer le TOTP du compte.</p><p><img src="https://blog.labperso.ovh/images/Proxmox_secu/09.png" alt="" loading="lazy" data-is-external-image="true"></p><p><img src="https://blog.labperso.ovh/images/Proxmox_secu/10.png" alt="" loading="lazy" data-is-external-image="true"><img src="https://blog.labperso.ovh/images/Proxmox_secu/11.png" alt="" loading="lazy" data-is-external-image="true"></p></div><footer class="post-footer"><ul class="post-tags"><li><a href="https://blog.labperso.ovh/tags/proxmox/">Proxmox</a></li> <li><a href="https://blog.labperso.ovh/tags/os/">OS</a></li></ul></footer></div><footer class="wrapper post__footer"><p class="post__last-updated">This article was updated on avril 7, 2025</p><div class="post__share"></div></footer><nav class="pagination"><div class="pagination__title"><span>Read other posts</span></div><div class="pagination__buttons"><a href="https://nidouille.github.io/instalation-pseudo-durci-de-debian11.html" class="btn previous" rel="prev" aria-label="[MISSING TRANSLATION]:  Instalation pseudo durci de Debian11 "><span class="btn__icon">←</span> <span class="btn__text">Instalation pseudo durci de Debian11</span> </a><a href="https://nidouille.github.io/preparer-son-action-post-incident.html" class="btn next" rel="next" aria-label="[MISSING TRANSLATION]:  Préparer son action post incident "><span class="btn__text">Préparer son action post incident</span> <span class="btn__icon">→</span></a></div></nav></article></main><footer class="footer"><div class="footer__inner"><div class="footer__copyright"><p>© 2024 Powered by Publii CMS :: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank" rel="noopener">Theme</a> ported by the <a href="https://getpublii.com/customization-service/" target="_blank" rel="noopener">Publii Team</a></p></div></div></footer></div><script defer="defer" src="https://nidouille.github.io/assets/js/scripts.min.js?v=c2232aa7558e9517946129d2a1b8c770"></script><script>window.publiiThemeMenuConfig={mobileMenuMode:'sidebar',animationSpeed:300,submenuWidth: 'auto',doubleClickTime:500,mobileMenuExpandableSubmenus:true,relatedContainerForOverlayMenuSelector:'.top'};</script><script>var images = document.querySelectorAll('img[loading]');
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script></body></html>
