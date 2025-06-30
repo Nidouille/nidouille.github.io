@@ -3,19 +3,19 @@
     <title>blog.labperso.ovh</title>
     <link href="https://nidouille.github.io/feed.xml" rel="self" />
     <link href="https://nidouille.github.io" />
-    <updated>2025-06-30T23:37:03+02:00</updated>
+    <updated>2025-06-30T23:39:24+02:00</updated>
     <author>
         <name>Nida</name>
     </author>
     <id>https://nidouille.github.io</id>
 
     <entry>
-        <title>Vidéo Datacenter</title>
+        <title>Vidéos Datacenter</title>
         <author>
             <name>Nida</name>
         </author>
-        <link href="https://nidouille.github.io/test2.html"/>
-        <id>https://nidouille.github.io/test2.html</id>
+        <link href="https://nidouille.github.io/video-dc.html"/>
+        <id>https://nidouille.github.io/video-dc.html</id>
         <media:content url="https://nidouille.github.io/media/posts/18/59126eec-c5ce-4552-890a-b1a051b7e56d.png" medium="image" />
             <category term="Vulgarisation"/>
             <category term="Vidéos"/>
