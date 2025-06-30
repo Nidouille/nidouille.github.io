@@ -1,0 +1,136 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Zabbix : Instalation en VM - blog.labperso.ovh</title><meta name="description" content="Je fais une instalation minimal apartir de l'ISO boot et je vous passe le détail de la création de la VM et du processus d'instation."><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://nidouille.github.io/zabbix-ipmi-monitoring.html"><link rel="alternate" type="application/atom+xml" href="https://nidouille.github.io/feed.xml" title="blog.labperso.ovh - RSS"><link rel="alternate" type="application/json" href="https://nidouille.github.io/feed.json" title="blog.labperso.ovh - JSON"><meta property="og:title" content="Zabbix : Instalation en VM"><meta property="og:image" content="https://nidouille.github.io/media/website/logo-stream-png.avif"><meta property="og:site_name" content="blog.labperso.ovh"><meta property="og:description" content="Je fais une instalation minimal apartir de l'ISO boot et je vous passe le détail de la création de la VM et du processus d'instation."><meta property="og:url" content="https://nidouille.github.io/zabbix-ipmi-monitoring.html"><meta property="og:type" content="article"><link rel="preload" href="https://nidouille.github.io/assets/dynamic/fonts/jetbrainsmono/jetbrainsmono.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="https://nidouille.github.io/assets/dynamic/fonts/jetbrainsmono/jetbrainsmono-italic.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="https://nidouille.github.io/assets/css/style.css?v=0de5ed4b6a37ab1ddecf11b6f3d8bbb5"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://nidouille.github.io/zabbix-ipmi-monitoring.html"},"headline":"Zabbix : Instalation en VM","datePublished":"2025-06-11T21:13+02:00","dateModified":"2025-06-30T15:58+02:00","image":{"@type":"ImageObject","url":"https://nidouille.github.io/media/website/logo-stream-png.avif","height":false,"width":false},"description":"Je fais une instalation minimal apartir de l'ISO boot et je vous passe le détail de la création de la VM et du processus d'instation.","author":{"@type":"Person","name":"Nida","url":"https://nidouille.github.io/authors/nida/"},"publisher":{"@type":"Organization","name":"Nida","logo":{"@type":"ImageObject","url":"https://nidouille.github.io/media/website/logo-stream-png.avif","height":false,"width":false}}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript></head><body class="post-template"><div class="container container--center"><header class="header"><div class="header__logo"><a class="logo" href="https://nidouille.github.io/"><img src="https://nidouille.github.io/media/website/logo-stream-png.avif" alt="blog.labperso.ovh" width="" height=""></a></div></header><main class="content"><article class="post"><header><h1 class="post__title">Zabbix : Instalation en VM</h1><div class="post__meta"><time datetime="2025-06-11T21:13" class="post__date">juin 11, 2025</time></div></header><div class="post__entry"><div class="post__toc"><h3>Table of Contents</h3><ul><li><a href="#mcetoc_1itgbbtoq3o">1. Environement technique</a></li><li><a href="#mcetoc_1itgbmals3u">2. Instalation de Alamalinux 9.6</a></li><li><a href="#mcetoc_1itgbmals3v">3. Instalation de Zabbix 7.4</a></li><li><a href="#mcetoc_1ithiqq63a">Instalation de Caddy</a></li><li><a href="#mcetoc_1ithiqq63b">Firewall</a></li></ul></div><p> </p><h1 id="mcetoc_1itgbbtoq3o">1. Environement technique</h1><ul><li>type VM<ul><li>vCPU : 2</li><li>vRAM : 2 Go</li><li>vDisk : 20Go</li></ul></li><li>OS : Almalinux 9.6</li><li>Zabbix version : 7.4 (version Beta)<ul><li>Webserveur : Caddy</li><li>Base de donnée : MariaDB</li></ul></li></ul><h1 id="mcetoc_1itgbmals3u">2. Instalation de Alamalinux 9.6</h1><p>Je fais une instalation minimal apartir de l'ISO boot et je vous passe le détail de la création de la VM et du processus d'instation.</p><p>Comme c'est une instalation minimal en VM basé sur KVM</p><pre class="language-bash"><code>dnf install bash-completion tmux qemu-guest-agent vim-enhanced
+systemctl enable --now qemu-guest-agent</code></pre><h1 id="mcetoc_1itgbmals3v">3. Instalation de Zabbix 7.4 (version Beta)</h1><p class="msg msg--warning">Il ne faut avoir le dépot EPEL d'activé, car celui ci ne dispose que de la version 7.0 de Zabbix. C'est la version LTS.</p><h2>3.1 Dépot Zabbix</h2><pre class="language-bash"><code>rpm -Uvh https://repo.zabbix.com/zabbix/7.4/release/alma/9/noarch/zabbix-release-latest-7.4.el9.noarch.rpm
+dnf clean all</code></pre><p>Instalation des packages de Zabbix</p><pre class="language-bash"><code>dnf install zabbix-server-mysql zabbix-web-mysql zabbix-sql-scripts zabbix-selinux-policy zabbix-agent
+</code></pre><p>Base de donné</p><pre class="language-bash"><code>dnf install mariadb-server
+systemctl enable --now mariadb</code></pre><pre class="language-sql"><code>mysql -uroot -p
+password
+mysql&gt; create database zabbix character set utf8mb4 collate utf8mb4_bin;
+mysql&gt; create user zabbix@localhost identified by 'password';
+mysql&gt; grant all privileges on zabbix.* to zabbix@localhost;
+mysql&gt; set global log_bin_trust_function_creators = 1;
+mysql&gt; quit;</code></pre><p> </p><pre class="language-bash"><code>zcat /usr/share/zabbix/sql-scripts/mysql/server.sql.gz | mysql --default-character-set=utf8mb4 -uzabbix -p zabbix</code></pre><p> </p><pre class="language-sql"><code>mysql -uroot -p
+password
+mysql&gt; set global log_bin_trust_function_creators = 0;
+mysql&gt; quit;</code></pre><p> </p><h1 id="mcetoc_1ithiqq63a">4. Caddy</h1><h2>4.1 Instaltion</h2><pre class="language-bash"><code>dnf install 'dnf-command(copr)'
+dnf copr enable @caddy/caddy
+dnf install caddy
+systemctl enable --now caddy</code></pre><h2>4.2 Configuration</h2><p> </p><h1 id="mcetoc_1ithiqq63b">Firewall</h1><p>Alamalinux active par défaut le firewall</p><pre class="language-apacheconf"><code>firewall-cmd --add-service=http --permanent
+firewall-cmd --add-service=https --permanent
+firewall-cmd --add-service=zabbix-server --permanent
+firewall-cmd --reload</code></pre><p> </p><p>HTTP Debian</p><pre class="language-apacheconf"><code># Configuration pour Zabbix avec Caddy
+
+:80 {
+    # Racine du document pour Zabbix
+    root * /usr/share/zabbix
+
+    # Active la compression
+    encode gzip
+
+    # Gère les requêtes PHP
+    php_fastcgi unix//run/php/php8.1-fpm.sock
+
+    # Configuration pour Zabbix
+    handle /zabbix/* {
+        try_files {path} {path}/ /zabbix/index.php?{query}
+    }
+
+    handle / {
+        try_files {path} {path}/ /index.php?{query}
+    }
+
+    # Configuration des en-têtes
+    header {
+        X-Content-Type-Options nosniff
+        X-Frame-Options SAMEORIGIN
+        X-XSS-Protection "1; mode=block"
+    }
+
+    # Configuration des logs
+    log {
+        output file /var/log/caddy/access.log
+    }
+}</code></pre><p>HTTP RED HAT</p><pre class="language-apacheconf"><code># Configuration pour Zabbix avec Caddy sur Red Hat
+
+:80 {
+    # Racine du document pour Zabbix
+    root * /usr/share/zabbix/ui
+
+    # Active la compression
+    encode gzip
+
+    # Gère les requêtes PHP
+    php_fastcgi unix//run/php-fpm/www.sock
+
+    # Configuration pour Zabbix
+    handle /zabbix/* {
+        try_files {path} {path}/ /zabbix/index.php?{query}
+    }
+
+    handle / {
+        try_files {path} {path}/ /index.php?{query}
+    }
+
+    # Configuration des en-têtes
+    header {
+        X-Content-Type-Options nosniff
+        X-Frame-Options SAMEORIGIN
+        X-XSS-Protection "1; mode=block"
+    }
+
+    # Configuration des logs
+    log {
+        output file /var/log/caddy/access.log
+    }
+}</code></pre><p>Https</p><pre class="language-apacheconf"><code># Configuration pour Zabbix avec Caddy
+
+:80 {
+    # Redirige HTTP vers HTTPS
+    redir https://{host}{uri}
+}
+
+:443 {
+    # Active le support TLS
+    tls your@email.com
+
+    # Racine du document pour Zabbix
+    root * /usr/share/zabbix
+
+    # Active la compression
+    encode gzip
+
+    # Gère les requêtes PHP
+    php_fastcgi unix//run/php/php8.1-fpm.sock
+
+    # Configuration pour Zabbix
+    handle /zabbix/* {
+        try_files {path} {path}/ /zabbix/index.php?{query}
+    }
+
+    handle / {
+        try_files {path} {path}/ /index.php?{query}
+    }
+
+    # Configuration des en-têtes
+    header {
+        X-Content-Type-Options nosniff
+        X-Frame-Options SAMEORIGIN
+        X-XSS-Protection "1; mode=block"
+    }
+
+    # Configuration des logs
+    log {
+        output file /var/log/caddy/access.log
+    }
+}
+</code></pre></div><footer class="wrapper post__footer"><p class="post__last-updated">This article was updated on juin 30, 2025</p><div class="post__share"></div></footer></article></main><footer class="footer"><div class="footer__inner"><div class="footer__copyright"><p>© 2024 Powered by Publii CMS :: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank" rel="noopener">Theme</a> ported by the <a href="https://getpublii.com/customization-service/" target="_blank" rel="noopener">Publii Team</a></p></div></div></footer></div><script defer="defer" src="https://nidouille.github.io/assets/js/scripts.min.js?v=c2232aa7558e9517946129d2a1b8c770"></script><script>window.publiiThemeMenuConfig={mobileMenuMode:'sidebar',animationSpeed:300,submenuWidth: 'auto',doubleClickTime:500,mobileMenuExpandableSubmenus:true,relatedContainerForOverlayMenuSelector:'.top'};</script><script>var images = document.querySelectorAll('img[loading]');
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script></body></html>
