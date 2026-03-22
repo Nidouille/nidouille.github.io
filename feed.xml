@@ -3,12 +3,75 @@
     <title>blog.labperso.ovh</title>
     <link href="https://nidouille.github.io/feed.xml" rel="self" />
     <link href="https://nidouille.github.io" />
-    <updated>2025-06-30T23:58:43+02:00</updated>
+    <updated>2026-03-22T13:24:04+01:00</updated>
     <author>
         <name>Nida</name>
     </author>
     <id>https://nidouille.github.io</id>
 
+    <entry>
+        <title>UT99 sur Linux</title>
+        <author>
+            <name>Nida</name>
+        </author>
+        <link href="https://nidouille.github.io/ut99-sur-linux.html"/>
+        <id>https://nidouille.github.io/ut99-sur-linux.html</id>
+        <media:content url="https://nidouille.github.io/media/posts/23/unreal_tournament_99_wallpaper_2_by_mastershake1988_dbqjqwm-fullview.jpg" medium="image" />
+            <category term="tournament"/>
+            <category term="Unreal"/>
+            <category term="Linux"/>
+
+        <updated>2025-08-25T17:37:47+02:00</updated>
+            <summary type="html">
+                <![CDATA[
+                        <img src="https://nidouille.github.io/media/posts/23/unreal_tournament_99_wallpaper_2_by_mastershake1988_dbqjqwm-fullview.jpg" alt="" />
+                    Epyc a mis à dispotion gratuitement Unreal &amp; Unreal Tournament pour le projet OldUntreal. Sur le site on y trouve les patchs qui modernisent ses&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://nidouille.github.io/media/posts/23/unreal_tournament_99_wallpaper_2_by_mastershake1988_dbqjqwm-fullview.jpg" class="type:primaryImage" alt="" /></p>
+                <p>Epyc a mis à dispotion gratuitement Unreal &amp; Unreal Tournament pour le projet <a href="https://www.oldunreal.com" target="_blank" rel="noopener noreferrer">OldUntreal</a>. Sur le site on y trouve les patchs qui modernisent ses deux jeux pour les OS modernes avec le matériel moderne comme la prise en charge des écrans large ou de Vulkan, OpenGL 4, DirectX11 et les binaires des jeux (<a href="https://www.oldunreal.com/downloads/unreal/full-game-installers/" target="_blank" rel="noopener noreferrer">Unreal Gold</a> &amp; <a href="https://www.oldunreal.com/downloads/unrealtournament/full-game-installers/" target="_blank" rel="noopener noreferrer">UT99 Goty</a>)</p>
+<div class="post__toc">
+<h3>Table of Contents</h3>
+<ul>
+<li><a href="#mcetoc_1j3gv5dju3">UT99 linux native</a></li>
+<li><a href="#mcetoc_1j3gv5dju4">Wine</a></li>
+</ul>
+</div>
+<h1 id="mcetoc_1j3gv5dju3">UT99 linux native</h1>
+<ol>
+<li>Pour cela il faut récupérer les deux ISO de UT99 sur <a href="https://archive.org/details/ut-goty" target="_blank" rel="noopener noreferrer">archive.org</a> (<a href="https://archive.org/download/ut-goty/UT_GOTY_CD1.iso" target="_blank" rel="noopener noreferrer">CD1 </a>&amp; <a href="https://archive.org/download/ut-goty/UT_GOTY_CD2.iso" target="_blank" rel="noopener noreferrer">CD2</a>)</li>
+<li>Récupérer le dernier patch linux sur le <a href="https://github.com/OldUnreal/UnrealTournamentPatches" target="_blank" rel="noopener noreferrer">github du projet OldUnreal</a>, dans mon cas c'est le patch dernier en date au moment de la réaction <a href="https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469e-rc9/OldUnreal-UTPatch469e-Linux-amd64.tar.bz2" rel="nofollow" data-turbo="false" data-view-component="true" class="Truncate"><span class="Truncate-text text-bold" data-view-component="true">OldUnreal-UTPatch469e-Linux-amd64.tar.bz2</span></a></li>
+<li>Décompresser le patch</li>
+<li>Monter UT_GOTY_CD1</li>
+<li>Copier les dossiers suivant du CD vers le dossier du patch sans effacer les fichiers déjà présents :
+<ul>
+<li>Maps</li>
+<li>Music</li>
+<li>Sounds</li>
+<li>Textures</li>
+</ul>
+</li>
+<li>Faire de même avec UT_GOTY_CD2</li>
+<li>Lancer le jeux &lt;votre repetoire UT&gt;/System64/ut-bin-amd64</li>
+</ol>
+<h1 id="mcetoc_1j3gv5dju4">Wine</h1>
+<blockquote>
+<p>dpkg --add-architecture i386 &amp;&amp; apt-get update &amp;&amp; apt-get install wine32:i386 winetricks</p>
+<p>winetricks orm=backbuffer glsl=disable</p>
+<p>wine </p>
+</blockquote>
+<p> </p>
+<p> </p>
+<p>Serveur :<br><a href="https://hub.docker.com/r/gameservermanagers/gameserver/tags?name=ut">https://hub.docker.com/r/gameservermanagers/gameserver/tags?name=ut</a><br><a href="https://linuxgsm.com/servers/">https://linuxgsm.com/servers/</a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Vidéos Datacenter</title>
         <author>
@@ -22,7 +85,7 @@
             <category term="Data Center"/>
 
         <updated>2025-06-09T19:04:00+02:00</updated>
-            <summary>
+            <summary type="html">
                 <![CDATA[
                         <img src="https://nidouille.github.io/media/posts/18/59126eec-c5ce-4552-890a-b1a051b7e56d.png" alt="" />
                     Ce billet de blogue est une liste des différentes vidéos en français que je trouve pertinentes sur le monde des data centers. Play liste sur&hellip;
@@ -118,7 +181,7 @@
         <media:content url="https://nidouille.github.io/media/posts/14/th-lg.jpg" medium="image" />
 
         <updated>2023-08-31T00:00:00+02:00</updated>
-            <summary>
+            <summary type="html">
                 <![CDATA[
                         <img src="https://nidouille.github.io/media/posts/14/th-lg.jpg" alt="" />
                     Ce texte a été réécrit et modifié plusieurs fois au cours des années, il est donc possible qu'il manque parfois de cohérence. La correction a&hellip;
@@ -467,6 +530,9 @@
 <p>J'ai terminé de vider mon sac, sur cette partie qui m'affecte et me ronge.</p>
 <p>Exemple de gens mal attentionés :</p>
 <p><img loading="lazy" src="https://nyc3.digitaloceanspaces.com/btw-writer-prod/1740955908845%2Fdenis2.jpg" data-is-external-image="true"></p>
+<figure class="post__image"><img loading="lazy" src="https://nidouille.github.io/media/posts/14/2026-03-22-13.22.53-x.com-66ceca6e1143.jpg" alt="" width="751" height="190" sizes="(min-width: 920px) 703px, (min-width: 700px) calc(82vw - 35px), calc(100vw - 81px)" srcset="https://nidouille.github.io/media/posts/14/responsive/2026-03-22-13.22.53-x.com-66ceca6e1143-xs.jpg 300w ,https://nidouille.github.io/media/posts/14/responsive/2026-03-22-13.22.53-x.com-66ceca6e1143-sm.jpg 480w ,https://nidouille.github.io/media/posts/14/responsive/2026-03-22-13.22.53-x.com-66ceca6e1143-md.jpg 768w ,https://nidouille.github.io/media/posts/14/responsive/2026-03-22-13.22.53-x.com-66ceca6e1143-lg.jpg 1024w">
+<figcaption>Caption</figcaption>
+</figure>
 <h2 id="mcetoc_1iltl2ja296"><strong>La lecture</strong></h2>
 <p>Quand je parle d'écriture inclusive, je parle de l'utilisation des points médian ou comme des accords entre parenthèse. Ecriture on l'on écrit par exemple celles et ceux, je ne suis pas stupide je comprend et c'est parfaitement lisible. Si vous être une personne inclusive avec un minimum de jugeote, merci d'écrire comme ca, sinon je continuerais de vous classer dans fanatique religieux.</p>
 <p>Ma lecture est longue et compliqué, je dois m'y reprendre à plusieurs fois, prendre du temps pour lire. Le temps de lecture suivant le texte est fonction de la quantité de point ou de parenthèses présents. Je peux mettre entre 2 à 10 fois plus lents qu'une personne n'ayant aucune difficulté à lire le même texte.</p>
@@ -526,7 +592,7 @@
         <id>https://nidouille.github.io/preparer-son-action-post-incident.html</id>
 
         <updated>2022-03-29T00:00:00+02:00</updated>
-            <summary>
+            <summary type="html">
                 <![CDATA[
                     On a beau faire les mises à jour dès leurs publications, de respecter les bonnes pratiques en sécurité que l’on peut avoir son SI victime&hellip;
                 ]]>
@@ -569,7 +635,7 @@
         <id>https://nidouille.github.io/securisation-basique-de-son-proxmox.html</id>
 
         <updated>2021-12-14T00:00:00+01:00</updated>
-            <summary>
+            <summary type="html">
                 <![CDATA[
                     Je vois sur Internet des serveurs Proxmox pas sécurisés voir pire, des conseils qui préconisent d’utiliser un firewall comme pfSense installé en machine virtuelle pour&hellip;
                 ]]>
@@ -869,7 +935,7 @@ Subsystem       sftp    /usr/lib/openssh/sftp-server
         <id>https://nidouille.github.io/instalation-pseudo-durci-de-debian11.html</id>
 
         <updated>2021-11-19T00:00:00+01:00</updated>
-            <summary>
+            <summary type="html">
                 <![CDATA[
                     Introduction Pour faire suite à mon ancien billet de blog sur la création d’un NAS sous Debian 9, vu que l’on est maintenant sous Debian 11,&hellip;
                 ]]>
@@ -1351,7 +1417,7 @@ net.ipv6.conf.lo.disable_ipv6=1
         <id>https://nidouille.github.io/cloud-de-confiance-vs-cloud-souverain-le-faux-debat.html</id>
 
         <updated>2021-11-02T00:00:00+01:00</updated>
-            <summary>
+            <summary type="html">
                 <![CDATA[
                     Introduction Le sujet à la mode c’est le cloud de confiance et l’indignation que Thales s’associe avec Google. Je vais essayer de faire comprendre mon&hellip;
                 ]]>
@@ -1527,7 +1593,7 @@ net.ipv6.conf.lo.disable_ipv6=1
         <id>https://nidouille.github.io/distribution-nassan.html</id>
 
         <updated>2021-10-23T00:00:00+02:00</updated>
-            <summary>
+            <summary type="html">
                 <![CDATA[
                     Liste de différentes solution disponible pour monter un NAS/SAN Noms OS Orientation FS Limitation Amahi CentOS Geek ext4 EasyNAS openSUSE Geek BTRFS ESOS - Enterprise&hellip;
                 ]]>
@@ -1660,7 +1726,7 @@ net.ipv6.conf.lo.disable_ipv6=1
         <media:content url="https://nidouille.github.io/media/posts/8/TRACKIR-TrackIR-5-Head-Tracking-Eingabegeraet-Schwarz.png" medium="image" />
 
         <updated>2021-10-21T00:00:00+02:00</updated>
-            <summary>
+            <summary type="html">
                 <![CDATA[
                         <img src="https://nidouille.github.io/media/posts/8/TRACKIR-TrackIR-5-Head-Tracking-Eingabegeraet-Schwarz.png" alt="" />
                     Je joue DCS suite a un collègue qui m’a redonné le goût de la simulation de vol. À tel point que j’ai acheté des modules&hellip;
@@ -1696,7 +1762,7 @@ net.ipv6.conf.lo.disable_ipv6=1
         <id>https://nidouille.github.io/le-datacenter-le-plus-classe-du-monde.html</id>
 
         <updated>2021-10-18T00:00:00+02:00</updated>
-            <summary>
+            <summary type="html">
                 <![CDATA[
                     Le datacenter le plus classe du monde est espagnol : Centro Nacional de Supercomputación Le post original est sur mon twitter ICI Ce datacenter ou plutôt&hellip;
                 ]]>
@@ -1722,48 +1788,6 @@ net.ipv6.conf.lo.disable_ipv6=1
 <p>Pour plus d’information technique, le site officiel : <a href="https://www.bsc.es/marenostrum/marenostrum">https://www.bsc.es/marenostrum/marenostrum</a></p>
 <p><img src="https://pbs.twimg.com/media/EYcxBeTXsAAy2LE?format=jpg&amp;name=4096x4096" alt="" loading="lazy" data-is-external-image="true"><img src="https://pbs.twimg.com/media/EYcxF1wXgAEKOFL?format=jpg&amp;name=large" alt="" loading="lazy" data-is-external-image="true"></p>
 <p><img src="https://pbs.twimg.com/media/EYcxI2DXgAI2vUs?format=jpg&amp;name=medium" alt="" loading="lazy" data-is-external-image="true"><img src="https://pbs.twimg.com/media/EYcxXIDX0AIUisL?format=jpg&amp;name=medium" alt="" loading="lazy" data-is-external-image="true"></p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>ZFS</title>
-        <author>
-            <name>Nida</name>
-        </author>
-        <link href="https://nidouille.github.io/zfs.html"/>
-        <id>https://nidouille.github.io/zfs.html</id>
-        <media:content url="https://nidouille.github.io/media/posts/6/OIP-4.jpg" medium="image" />
-
-        <updated>2021-10-14T00:00:00+02:00</updated>
-            <summary>
-                <![CDATA[
-                        <img src="https://nidouille.github.io/media/posts/6/OIP-4.jpg" alt="" />
-                    Dès que je vois des articles ou tuto parlant de ZFS alors qu’ils devraient parler d’OpenZFS, je constate que peut expliquent la technologie ZFS. Et&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                    <p><img src="https://nidouille.github.io/media/posts/6/OIP-4.jpg" class="type:primaryImage" alt="" /></p>
-                <p>Dès que je vois des articles ou tuto parlant de ZFS alors qu’ils devraient parler d’OpenZFS, je constate que peut expliquent la technologie ZFS. Et je ne parle même pas de son histoire et évolution.</p>
-<h2 id="petite-histoire-rapide">Petite histoire rapide</h2>
-<p>ZFS a été créé chez SUN Microsystems pour le système d’exploitation Solaris au début des années 2000. Puis en 2005, SUN a passé Solaris en open sources via la licence CDDL qui donna naissance à Open Solaris et par conséquence ZFS est passé lui aussi open source sur la même licence.</p>
-<p>Les premières intégrations sérieuses l’ont été sur FreeBSD 7 alors que des portages sur Linux via Fuse (<a href="http://zfs-on-fuse.blogspot.com/2006/12/first-alpha-of-zfs-on-fuse-with-write.html">2006</a>) et Mac OS X (par Apple) l’on précédé.</p>
-<p>Mais un drame arriva, le rachat de SUN Microsystems par Oracle en 2009. Cela mit fin à la partie open source de ZFS et Open Solaris supporté par Oracle. Mais le monde du libre a repris les différents codes pour donner naissance à OpenZFS et illuminos.</p>
-<p>Les choses deviennent intéressantes pour ZFS et OpenZFS, le premier, est maintenant fermé et le dernier lui est ouvert. Comment faire pour ne pas se tirer une balle dans le pied pour OpenZFS. Au moment de la fermeture, des sources ZFS étaient en version 28 et Oracle a continuer de le développer. Impossible de reprendre les numéros de version utilisés par ZFS dans OpenZFS, il alors été décidé qu’OpenZFS commencerait en version 5000, cela devrait éviter les soucis de se marcher sur les pieds. Jusqu’à maintenant, ça fonctionne bien. La version de ZFS par Oracle est la 48, mais OpenZFS garde une compatibilité jusqu’à la version 35.</p>
-<p>Dernièrement, OpenZFS (décembre 2020) est sortie en version 2.0 (dernière monture du code : 2.0.6) avec de sacré avancés techniques dépassant largement une meilleure intégration dans Linux. La version 3 devrait s’attaquer à Mac OS.</p>
-<h2 id="un-peu-de-technique">Un peu de technique</h2>
-<p>ZFS est plus qu’un système de fichier, cela englobe une partie des fonctions dédiées à du hardware sur les cartes RAID.</p>
-<p><img src="https://blog.labperso.ovh/images/zfs.png" alt="ZFS" loading="lazy" data-is-external-image="true"></p>
-<p>Le Zpool est un espace de stockage virtuel qui est basé sur des Vdev.</p>
-<p>Ses Vdevs sont des Virtual devices. Ils sont constitués par des périphériques en mode bloc comme des disques dur complets (ce qui est recommandé) ou de partition ou même de fichier. Ce sont sur ses Vdevs que l’on va configurer le “RAID” en mode stripe (raid 0), miror (raid 1 et même le 10) et les fameux RAID-Z qui correspondent aux différents niveau de parité. De mémoire jusqu’à 3 disques de parité via le RAID-Z 3 qui peut être vu comme du raid 7.</p>
-<p>Ensuite, il ne faut surtout pas négliger les différents type de cache.</p>
-<ul>
-<li>ARC (en ram) ou L2ARC (ssd) : cache de lecture volatile</li>
-<li>ZIL : cache d’écriture non volatile</li>
-<li>SLOG (Separate Intent Log) : cache d’écriture volatile</li>
-</ul>
-<p>C’est une petite explication rapide du fonctionnement du ZFS en dessous du système de fichier et des zvol. Le Zvol est aussi très intéressant.</p>
-<p>Ne me demandez pas de comparer avec Btrfs, ne l’ayant pas utilisé, je ne me suis jamais intéressée de son fonctionnement.</p>
             ]]>
         </content>
     </entry>
